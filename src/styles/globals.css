@@ -1,0 +1,202 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&family=Inter:wght@400;500;600&display=swap');
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Heyo Neon Theme Colors */
+  --electric-blue: #2563EB;
+  --hot-pink: #EC4899;
+  --mint-aqua: #14B8A6;
+  --graphite: #111827;
+  --surface: #1F2937;
+  --text-primary: #FFFFFF;
+  --text-secondary: #9CA3AF;
+  --success: #84CC16;
+  --error: #F43F5E;
+  
+  --font-size: 16px;
+  --background: var(--graphite);
+  --foreground: var(--text-primary);
+  --card: var(--surface);
+  --card-foreground: var(--text-primary);
+  --popover: var(--surface);
+  --popover-foreground: var(--text-primary);
+  --primary: var(--electric-blue);
+  --primary-foreground: var(--text-primary);
+  --secondary: var(--hot-pink);
+  --secondary-foreground: var(--text-primary);
+  --muted: #374151;
+  --muted-foreground: var(--text-secondary);
+  --accent: var(--mint-aqua);
+  --accent-foreground: var(--graphite);
+  --destructive: var(--error);
+  --destructive-foreground: var(--text-primary);
+  --border: rgba(255, 255, 255, 0.1);
+  --input: transparent;
+  --input-background: var(--surface);
+  --switch-background: #4B5563;
+  --font-weight-medium: 500;
+  --font-weight-normal: 400;
+  --ring: var(--mint-aqua);
+  --radius: 0.75rem;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-input-background: var(--input-background);
+  --color-switch-background: var(--switch-background);
+  --color-ring: var(--ring);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  
+  /* Heyo Custom Colors */
+  --color-electric-blue: var(--electric-blue);
+  --color-hot-pink: var(--hot-pink);
+  --color-mint-aqua: var(--mint-aqua);
+  --color-graphite: var(--graphite);
+  --color-surface: var(--surface);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-success: var(--success);
+  --color-error: var(--error);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-graphite text-text-primary;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+  
+  h1, h2, h3 {
+    font-family: 'Poppins', sans-serif;
+  }
+}
+
+/**
+ * Base typography. This is not applied to elements which have an ancestor with a Tailwind text class.
+ */
+@layer base {
+  :where(:not(:has([class*=" text-"]), :not(:has([class^="text-"])))) {
+    h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      line-height: 1.3;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      line-height: 1.3;
+    }
+
+    h3 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      line-height: 1.3;
+    }
+
+    h4 {
+      font-size: 1rem;
+      font-weight: 600;
+      line-height: 1.5;
+    }
+
+    p {
+      font-size: 1rem;
+      font-weight: 400;
+      line-height: 1.5;
+    }
+
+    label {
+      font-size: 0.875rem;
+      font-weight: 500;
+      line-height: 1.5;
+    }
+
+    button {
+      font-size: 1rem;
+      font-weight: 500;
+      line-height: 1.5;
+    }
+
+    input {
+      font-size: 1rem;
+      font-weight: 400;
+      line-height: 1.5;
+    }
+  }
+}
+
+html {
+  font-size: var(--font-size);
+}
+
+/* Custom animations */
+@keyframes glow {
+  0%, 100% {
+    filter: drop-shadow(0 0 8px rgba(37, 99, 235, 0.6));
+  }
+  50% {
+    filter: drop-shadow(0 0 16px rgba(37, 99, 235, 0.9));
+  }
+}
+
+@keyframes bounce-soft {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+@keyframes wave-ripple {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+.animate-glow {
+  animation: glow 2s ease-in-out infinite;
+}
+
+.animate-bounce-soft {
+  animation: bounce-soft 0.3s ease-in-out;
+}
+
+/* Gradient backgrounds */
+.gradient-radial-blue {
+  background: radial-gradient(circle at 50% 0%, rgba(37, 99, 235, 0.15) 0%, transparent 50%);
+}
+
+.gradient-radial-pink {
+  background: radial-gradient(circle at 50% 100%, rgba(236, 72, 153, 0.15) 0%, transparent 50%);
+}
